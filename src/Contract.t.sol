@@ -8,13 +8,9 @@ contract MyTest is Test {
     Contract myContract = new Contract();
 
     function testDeployContractWithAnotherVersion() public {
-        bytes memory bytecode = vm.getCode("Contract6.sol:Contract6");
-        address anotherAddress;
-        assembly {
-            anotherAddress := create(0, add(bytecode, 0x20), mload(bytecode))
-        }
+        address anotherAddress = deployCode("Contract6.sol:Contract6");
 
         // Different compiler versions will produce different bytecodes
-        assertFalse(keccak256(address(myContract).code) == keccak256(anotherAddress.code)); // [PASS]
+        assertTrue(keccak256(address(myContract).code) != keccak256(anotherAddress.code)); // [PASS]
     }
 }
