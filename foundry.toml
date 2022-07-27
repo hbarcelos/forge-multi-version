@@ -2,5 +2,14 @@
 src = 'src'
 out = 'out'
 libs = ['lib']
+optimizer = false
+solc_version = '0.8.14'
+
+[profile.0_6_x]
+src = 'src-0_6_x'
+out = 'out'
+libs = ['lib']
+optimizer = false
+solc_version = '0.6.12'
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config
